@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de Gás</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <link rel="icon" href="img/Icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.css" integrity="sha512-8BU3emz11z9iF75b10oPjjpamM4Mz23yQFQymbtwyPN3mNWHxpgeqyrYnkIUP6A8KyAj5k2p3MiYLtYqew7gIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="logo">
+                <img src="img/Icon.svg" class="filltercss" alt="Icon">
+            </div>
+            <div class="links">
+                <ul>
+                    <li><a href="../login.html">Inicio</a></li>
+                    <!-- <li><a href="history.html">Histórico</a></li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="gasbox">
+                <div class="title">
+                    <h1>Nível do Gás</h1>
+                </div>
+                <div class="gasvalue">
+                    <div id="gasReading" class="gas-reading normal">0</div>
+                    <div id="alert" class="alert">ATENÇÃO: Nível de gás ALTO!</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-side">
+            <div class="footer">
+              <img class="imgfooter" src="img/icon.svg" alt="Logo Institucional">
+              <!-- <img class="imgfooter2" src="img/text-logo.svg" alt="Logo Institucional"> -->
+            </div>
+            <div class="footer-2">
+              <footer>Todos os direitos reservados &copy; 2024 DMGP.</footer>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ws = new WebSocket('ws://192.168.4.1:8080');
+
+        ws.onmessage = (event) => {
+            event.data.text().then(text => {
+                let value = parseInt(text);
+                const gasReadingElement = document.getElementById('gasReading');
+                const alertElement = document.getElementById('alert');
+
+                gasReadingElement.innerText = value;
+
+                if (value > 270) {
+                    gasReadingElement.classList.remove('normal');
+                    gasReadingElement.classList.add('high');
+                    alertElement.style.display = 'block';
+                } else {
+                    gasReadingElement.classList.remove('high');
+                    gasReadingElement.classList.add('normal');
+                    alertElement.style.display = 'none';
+                }
+            });
+        };
+
+        ws.onopen = () => {
+            console.log('WebSocket connection established');
+        };
+
+        ws.onclose = () => {
+            console.log('WebSocket connection closed');
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Mateus Fran",
+  "dependencies": {
+    "express": "^4.19.2",
+    "twilio": "^5.3.0",
+    "ws": "^8.18.0"
+  }
+}

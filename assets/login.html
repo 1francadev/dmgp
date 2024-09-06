@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitor de Gás</title>
+    <link rel="stylesheet" href="css/style-login.css">
+    <link rel="icon" href="img/Icon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container"> 
+        <div class="right">
+            <div class="imgside">
+                <img src="img/imglogin.svg" alt="">
+            </div>
+        </div>
+        <div class="border"></div>
+        <div class="left">
+            <div class="topside">
+                <div class="logo"><a href="login.html"><img src="img/text-logo.svg" alt=""></a></div>
+                <div class="btn"><a href="faq.html">Ajuda</a></div>
+            </div>
+            <div class="middleside">
+                <form action="login.php" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <label for="username" class="labelinput">Usuário</label>
+                            <input type="text" id="username" name="username" class="inputstyle" placeholder="Insira seu nome de Usuário"
+                                required>
+                        </div>
+                        <div class="col">
+                            <label for="password" id="password" class="labelinput">Senha</label>
+                            <input type="text" name="password" class="inputstyle" placeholder="Insira sua Senha"
+                                required>
+                        </div>
+                        <div class="col"><button class="submit" type="submit">Entrar</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
