@@ -38,6 +38,6 @@ wss.on('connection', (ws) => {
     });
 });
 
-server.listen(process.env.PORT || 8080, () => {
+server.listen(process.env.PORT || 3030, () => {
     console.log('Server is running');
 });
